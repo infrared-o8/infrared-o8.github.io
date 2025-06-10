@@ -1166,5 +1166,37 @@
         // Save form data every 30 seconds
         setInterval(simulateAutoSave, 30000);
     </script>
+            <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+
+    apiKey: "AIzaSyArKpRmgNxo3POnmGjU-Kn-ces3HmY814Y",
+
+    authDomain: "resumeforger-fd27b.firebaseapp.com",
+
+    projectId: "resumeforger-fd27b",
+
+    storageBucket: "resumeforger-fd27b.firebasestorage.app",
+
+    messagingSenderId: "1006313420221",
+
+    appId: "1:1006313420221:web:1b23c312128a8202df4ed4",
+
+    measurementId: "G-1ZCVC00N3L"
+
+    };
+
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    </script>
 </body>
 </html>
