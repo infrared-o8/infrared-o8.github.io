@@ -1,250 +1,132 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Today in India</title>
+    <title>ResumeForge - Build Your Future</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #1a1a1a;
-            --bg-card: rgba(26, 26, 26, 0.8);
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --text-accent: #60a5fa;
-            --border: rgba(255, 255, 255, 0.1);
-            --glow: rgba(96, 165, 250, 0.3);
-            --gradient: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(147, 51, 234, 0.1));
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg: #0f0f23;
+            --bg-light: #1a1a2e;
+            --text: #e2e8f0;
+            --text-dim: #94a3b8;
+            --accent: #f59e0b;
+            --glass: rgba(255, 255, 255, 0.1);
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+        }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        .container {
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            animation: pulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.6; }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            backdrop-filter: blur(20px);
+            background: rgba(15, 15, 35, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
-            min-height: 100vh;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+        .logo {
+            font-size: 1.5rem;
             font-weight: 600;
-            background: linear-gradient(135deg, #ffffff, #60a5fa);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
         }
 
-        .subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            font-weight: 300;
-        }
-
-        .date-display {
-            margin-top: 1rem;
-            padding: 1rem 2rem;
-            background: var(--gradient);
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            display: inline-block;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        .nav-links {
+            display: flex;
             gap: 2rem;
-            margin-bottom: 2rem;
+            list-style: none;
         }
 
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 2rem;
-            backdrop-filter: blur(20px);
-            position: relative;
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
             transition: all 0.3s ease;
-            overflow: hidden;
-            animation: fadeInUp 0.8s ease-out backwards;
+            position: relative;
         }
 
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: var(--glow);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--glow);
+        .nav-links a:hover {
+            color: var(--text);
         }
 
-        .card::before {
+        .nav-links a::after {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: -5px;
             left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--glow), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
         }
 
-        .card:hover::before {
-            opacity: 1;
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
-        .card-header {
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
+            justify-content: center;
+            padding: 2rem;
         }
 
-        .card-icon {
-            font-size: 1.5rem;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .weather-main {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .temperature {
-            font-size: 3rem;
-            font-weight: 600;
-            color: var(--text-accent);
-        }
-
-        .weather-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .detail-item {
+        .hero {
             text-align: center;
-            padding: 0.75rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .detail-value {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--text-accent);
-        }
-
-        .detail-label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-top: 0.25rem;
-        }
-
-        .news-item {
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .news-item:last-child {
-            border-bottom: none;
-        }
-
-        .news-title {
-            font-size: 0.95rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-        }
-
-        .news-source {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .trending-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .trending-item:last-child {
-            border-bottom: none;
-        }
-
-        .trending-rank {
-            font-weight: 600;
-            color: var(--text-accent);
-            font-size: 1.1rem;
-            min-width: 1.5rem;
-        }
-
-        .history-item {
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .history-item:last-child {
-            border-bottom: none;
-        }
-
-        .history-year {
-            font-weight: 600;
-            color: var(--text-accent);
-            margin-bottom: 0.25rem;
-        }
-
-        .loading {
-            text-align: center;
-            color: var(--text-secondary);
-            font-style: italic;
-        }
-
-        .error {
-            color: #ef4444;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
         }
 
         @keyframes fadeInUp {
@@ -258,661 +140,442 @@
             }
         }
 
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
-        .card:nth-child(4) { animation-delay: 0.4s; }
-        .card:nth-child(5) { animation-delay: 0.5s; }
-        .card:nth-child(6) { animation-delay: 0.6s; }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
 
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.3)); }
+            to { filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.6)); }
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .cta-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .feature-card p {
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-dim);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
+            .nav-links {
+                display: none;
             }
             
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+            .cta-container {
+                flex-direction: column;
+                align-items: center;
             }
             
-            .card {
-                padding: 1.5rem;
-            }
-            
-            .temperature {
-                font-size: 2.5rem;
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
             }
         }
 
-        .pulse {
-            animation: pulse 2s infinite;
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            animation: slideIn 0.3s ease;
         }
 
-        .aqi-good { color: #22c55e; }
-        .aqi-moderate { color: #eab308; }
-        .aqi-unhealthy { color: #ef4444; }
-        .aqi-hazardous { color: #991b1b; }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translate(-50%, -60%); opacity: 0; }
+            to { transform: translate(-50%, -50%); opacity: 1; }
+        }
+
+        .close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: var(--text);
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <h1 class="title">Today in India</h1>
-            <p class="subtitle">Your daily digest of weather, news, and trends</p>
-            <div class="date-display" id="currentDate"></div>
-        </header>
+    <header>
+        <nav>
+            <div class="logo">ResumeForge</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <main class="grid">
-            <!-- Weather Card -->
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">🌤️</span>
-                    <h2 class="card-title">Weather</h2>
-                    <div style="margin-left: auto;">
-                        <select id="location-selector" style="background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text-primary); padding: 0.5rem; border-radius: 8px; font-size: 0.9rem;">
-                            <option value="delhi">Delhi</option>
-                            <option value="mumbai">Mumbai</option>
-                            <option value="bangalore">Bangalore</option>
-                            <option value="chennai">Chennai</option>
-                            <option value="kolkata">Kolkata</option>
-                            <option value="hyderabad">Hyderabad</option>
-                            <option value="current">📍 My Location</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="weather-content">
-                    <div class="loading pulse">Loading weather data...</div>
-                </div>
+    <main id="home">
+        <section class="hero">
+            <h1>Build Your Future</h1>
+            <p>Create professional resumes in minutes with our intuitive builder. Perfect for students, freshers, and career changers.</p>
+            
+            <div class="cta-container">
+                <button class="btn btn-primary" onclick="startBuilding()">
+                    ✨ Start Building
+                </button>
+                <a href="#features" class="btn btn-secondary">
+                    🔍 Learn More
+                </a>
             </div>
+        </section>
+    </main>
 
-            <!-- Air Quality Card -->
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">🫁</span>
-                    <h2 class="card-title">Air Quality</h2>
-                </div>
-                <div id="air-quality-content">
-                    <div class="loading pulse">Loading air quality data...</div>
-                </div>
+    <section class="features" id="features">
+        <h2>Why Choose ResumeForge?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Easy Form Builder</h3>
+                <p>Simple, step-by-step form that guides you through creating your perfect resume. No technical skills required.</p>
             </div>
-
-            <!-- News Headlines Card -->
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">📰</span>
-                    <h2 class="card-title">Top Headlines</h2>
-                </div>
-                <div id="news-content">
-                    <div class="loading pulse">Loading news...</div>
-                </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">👀</div>
+                <h3>Live Preview</h3>
+                <p>See your resume come to life as you type. Real-time preview ensures you get exactly what you want.</p>
             </div>
-
-            <!-- Holidays Card -->
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">📅</span>
-                    <h2 class="card-title">Holidays Today</h2>
-                </div>
-                <div id="holidays-content">
-                    <div class="loading pulse">Loading holidays...</div>
-                </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Mobile Friendly</h3>
+                <p>Build your resume on any device. Our responsive design works perfectly on phones, tablets, and desktops.</p>
             </div>
-
-            <!-- Today in History Card -->
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">📜</span>
-                    <h2 class="card-title">Today in History</h2>
-                </div>
-                <div id="history-content">
-                    <div class="loading pulse">Loading historical events...</div>
-                </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Professional Templates</h3>
+                <p>Choose from carefully designed templates that make your resume stand out to employers.</p>
             </div>
-
-            <!-- Trending Searches Card -->
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-icon">🔥</span>
-                    <h2 class="card-title">Trending in India</h2>
-                </div>
-                <div id="trending-content">
-                    <div class="loading pulse">Loading trending searches...</div>
-                </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Instant Download</h3>
+                <p>Download your resume as a high-quality PDF instantly. No waiting, no subscriptions required.</p>
             </div>
-        </main>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Privacy First</h3>
+                <p>Your data stays with you. We don't store any personal information on our servers.</p>
+            </div>
+        </div>
+    </section>
 
-        <footer class="footer">
-            <p>Data updates every hour • Made with ❤️ for India</p>
-        </footer>
+    <footer>
+        <p>&copy; 2025 ResumeForge. Built with ❤️ for students and professionals.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="comingSoonModal" class="modal">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal()">&times;</button>
+            <h2>🚀 Coming Soon!</h2>
+            <p>We're putting the finishing touches on our resume builder. Sign up to be notified when it's ready!</p>
+            <br>
+            <input type="email" placeholder="Enter your email" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: white; margin-bottom: 1rem;">
+            <button class="btn btn-primary" onclick="subscribe()">Notify Me</button>
+        </div>
     </div>
 
     <script>
-        // API Configuration - ADD YOUR API KEYS HERE
-        const API_KEYS = {
-            newsapi: '4f5fba80d97c45059cb6132216d79a6a', // Get from newsapi.org
-            openweather: 'f6fb7013366a2765a6209c0bc700774c', // Get from openweathermap.org
-            apininjas: '5CSrtFWLq4VJ+2KFtBHbYw==pPdLlPoq3TrY84b3', // Get from api.api-ninjas.com
-            serpapi: 'c59d360db259872bed96932b985ac7412424553d99dc2038afc4bdf61159da52'  // Add this line
-        };
-
-        // Location settings
-        let currentLocation = { lat: 28.7041, lon: 77.1025, name: 'Delhi, India' }; // Default
-
-        // Update current date
-        function updateDate() {
-            const now = new Date();
-            const options = {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                timeZone: 'Asia/Kolkata'
-            };
-            document.getElementById('currentDate').textContent = now.toLocaleDateString('en-IN', options);
-        }
-
-        // Location data for Indian cities
-        const cityCoordinates = {
-            delhi: { lat: 28.7041, lon: 77.1025, name: 'Delhi, India' },
-            mumbai: { lat: 19.0760, lon: 72.8777, name: 'Mumbai, India' },
-            bangalore: { lat: 12.9716, lon: 77.5946, name: 'Bangalore, India' },
-            chennai: { lat: 13.0827, lon: 80.2707, name: 'Chennai, India' },
-            kolkata: { lat: 22.5726, lon: 88.3639, name: 'Kolkata, India' },
-            hyderabad: { lat: 17.3850, lon: 78.4867, name: 'Hyderabad, India' }
-        };
-
-        // Get user's current location
-        async function getCurrentLocation() {
-            return new Promise((resolve, reject) => {
-                if (!navigator.geolocation) {
-                    reject(new Error('Geolocation not supported'));
-                    return;
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
-                
-                navigator.geolocation.getCurrentPosition(resolve, reject, {
-                    timeout: 10000,
-                    enableHighAccuracy: true
-                });
             });
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(15, 15, 35, 0.95)';
+            } else {
+                header.style.background = 'rgba(15, 15, 35, 0.8)';
+            }
+        });
+
+        // Feature cards animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            observer.observe(card);
+        });
+
+        // Modal functions
+        function startBuilding() {
+            document.getElementById('comingSoonModal').style.display = 'block';
         }
 
-        async function loadTrending() {
-            try {
-                // First show loading state
-                document.getElementById('trending-content').innerHTML = '<div class="loading pulse">Loading trending searches...</div>';
+        function closeModal() {
+            document.getElementById('comingSoonModal').style.display = 'none';
+        }
 
-                // Replace with your actual SerpAPI key
-                const apiKey = 'YOUR_SERPAPI_KEY_HERE'; 
-                
-                // Make request to SerpAPI for Google Trends data
-                const response = await fetch(`https://serpapi.com/search?engine=google_trends&geo=IN&data_type=TIMESERIES&api_key=${apiKey}`);
-                
-                if (!response.ok) {
-                    throw new Error(`API request failed with status ${response.status}`);
-                }
-
-                const data = await response.json();
-                
-                // Check if we got trending searches data
-                if (data.trending_searches) {
-                    const trends = data.trending_searches.slice(0, 8); // Get top 8 trends
-                    
-                    document.getElementById('trending-content').innerHTML = trends.map((item, index) => `
-                        <div class="trending-item">
-                            <div class="trending-rank">${index + 1}</div>
-                            <div>${item.title || item.query}</div>
-                        </div>
-                    `).join('');
-                } else {
-                    // Fallback to mock data if no trends found
-                    loadMockTrends();
-                }
-            } catch (error) {
-                console.error('Trending error:', error);
-                // Fallback to mock data if API fails
-                loadMockTrends();
+        function subscribe() {
+            const email = document.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Thanks for signing up! We\'ll notify you when ResumeForge is ready.');
+                closeModal();
+            } else {
+                alert('Please enter a valid email address.');
             }
         }
 
-        // Fallback function with mock data
-        function loadMockTrends() {
-            const currentTrends = [
-                "Cricket World Cup 2025",
-                "Bollywood Box Office",
-                "Stock Market India",
-                "Monsoon Update",
-                "IPL 2025 Schedule",
-                "Electric Vehicle Subsidies",
-                "Aadhaar Update",
-                "Income Tax Calculator"
-            ];
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('comingSoonModal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Add some interactive particles (optional eye candy)
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.width = '4px';
+            particle.style.height = '4px';
+            particle.style.background = 'rgba(99, 102, 241, 0.6)';
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '1';
+            particle.style.left = Math.random() * window.innerWidth + 'px';
+            particle.style.top = window.innerHeight + 'px';
             
-            document.getElementById('trending-content').innerHTML = currentTrends.map((item, index) => `
-                <div class="trending-item">
-                    <div class="trending-rank">${index + 1}</div>
-                    <div>${item}</div>
-                </div>
-            `).join('');
-        }
-
-
-
-        // Weather API with real OpenWeatherMap data
-        async function loadWeather() {
-            try {
-                let coords = currentLocation;
-                
-                // If user selected current location, get GPS coordinates
-                const selectedLocation = document.getElementById('location-selector').value;
-                if (selectedLocation === 'current') {
-                    try {
-                        const position = await getCurrentLocation();
-                        coords = {
-                            lat: position.coords.latitude,
-                            lon: position.coords.longitude,
-                            name: 'Your Location'
-                        };
-                    } catch (error) {
-                        console.log('Location access denied, using Delhi as fallback');
-                        coords = cityCoordinates.delhi;
-                    }
-                } else {
-                    coords = cityCoordinates[selectedLocation] || cityCoordinates.delhi;
-                }
-                
-                currentLocation = coords;
-
-                // Use OpenWeatherMap API if key is provided, otherwise fall back to Open-Meteo
-                let weatherData;
-                if (API_KEYS.openweather && API_KEYS.openweather !== 'YOUR_OPENWEATHER_KEY_HERE') {
-                    // OpenWeatherMap API (more detailed)
-                    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&appid=${API_KEYS.openweather}&units=metric`);
-                    const data = await response.json();
-                    
-                    weatherData = {
-                        temp: Math.round(data.main.temp),
-                        feelsLike: Math.round(data.main.feels_like),
-                        humidity: data.main.humidity,
-                        windSpeed: Math.round(data.wind.speed * 3.6), // Convert m/s to km/h
-                        description: `${getWeatherEmoji(data.weather[0].id)} ${data.weather[0].description}`,
-                        visibility: Math.round(data.visibility / 1000) + ' km'
-                    };
-                } else {
-                    // Open-Meteo API (free fallback)
-                    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,visibility&timezone=auto`);
-                    const data = await response.json();
-                    
-                    weatherData = {
-                        temp: Math.round(data.current.temperature_2m),
-                        feelsLike: Math.round(data.current.apparent_temperature),
-                        humidity: data.current.relative_humidity_2m,
-                        windSpeed: Math.round(data.current.wind_speed_10m),
-                        description: getOpenMeteoDescription(data.current.weather_code),
-                        visibility: data.current.visibility ? Math.round(data.current.visibility / 1000) + ' km' : 'Good'
-                    };
-                }
-                
-                document.getElementById('weather-content').innerHTML = `
-                    <div class="weather-main">
-                        <div class="temperature">${weatherData.temp}°</div>
-                        <div>
-                            <div style="font-size: 1.1rem; margin-bottom: 0.25rem; text-transform: capitalize;">${weatherData.description}</div>
-                            <div style="color: var(--text-secondary);">${coords.name}</div>
-                        </div>
-                    </div>
-                    <div class="weather-details">
-                        <div class="detail-item">
-                            <div class="detail-value">${weatherData.feelsLike}°</div>
-                            <div class="detail-label">Feels like</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-value">${weatherData.humidity}%</div>
-                            <div class="detail-label">Humidity</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-value">${weatherData.windSpeed}</div>
-                            <div class="detail-label">Wind km/h</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-value">${weatherData.visibility}</div>
-                            <div class="detail-label">Visibility</div>
-                        </div>
-                    </div>
-                `;
-            } catch (error) {
-                console.error('Weather error:', error);
-                document.getElementById('weather-content').innerHTML = '<div class="error">Unable to load weather data</div>';
-            }
-        }
-
-        // Weather emoji mapping for OpenWeatherMap
-        function getWeatherEmoji(weatherId) {
-            if (weatherId >= 200 && weatherId < 300) return '⛈️';
-            if (weatherId >= 300 && weatherId < 400) return '🌦️';
-            if (weatherId >= 500 && weatherId < 600) return '🌧️';
-            if (weatherId >= 600 && weatherId < 700) return '🌨️';
-            if (weatherId >= 700 && weatherId < 800) return '🌫️';
-            if (weatherId === 800) return '☀️';
-            if (weatherId > 800) return '☁️';
-            return '🌤️';
-        }
-
-        // Weather description for Open-Meteo
-        function getOpenMeteoDescription(code) {
-            const descriptions = {
-                0: '☀️ Clear sky',
-                1: '🌤️ Mainly clear',
-                2: '⛅ Partly cloudy',
-                3: '☁️ Overcast',
-                45: '🌫️ Foggy',
-                48: '🌫️ Depositing rime fog',
-                51: '🌦️ Light drizzle',
-                61: '🌧️ Slight rain',
-                80: '🌧️ Rain showers'
-            };
-            return descriptions[code] || '🌤️ Partly cloudy';
-        }
-
-        // Air Quality (mock data since free AQI APIs are limited)
-        async function loadAirQuality() {
-            try {
-                // Using mock data for demonstration
-                const aqi = Math.floor(Math.random() * 200) + 50;
-                let aqiClass = 'aqi-good';
-                let aqiStatus = 'Good';
-                
-                if (aqi > 100) {
-                    aqiClass = 'aqi-moderate';
-                    aqiStatus = 'Moderate';
-                }
-                if (aqi > 150) {
-                    aqiClass = 'aqi-unhealthy';
-                    aqiStatus = 'Unhealthy';
-                }
-                if (aqi > 200) {
-                    aqiClass = 'aqi-hazardous';
-                    aqiStatus = 'Hazardous';
-                }
-                
-                document.getElementById('air-quality-content').innerHTML = `
-                    <div class="weather-main">
-                        <div class="temperature ${aqiClass}">${aqi}</div>
-                        <div>
-                            <div style="font-size: 1.1rem; margin-bottom: 0.25rem;">${aqiStatus}</div>
-                            <div style="color: var(--text-secondary);">Air Quality Index</div>
-                        </div>
-                    </div>
-                    <div style="margin-top: 1rem; padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 10px;">
-                        <div style="font-size: 0.9rem; color: var(--text-secondary);">
-                            ${aqi < 100 ? 'Air quality is good for outdoor activities.' : 
-                              aqi < 150 ? 'Sensitive individuals should limit outdoor activities.' : 
-                              'Everyone should limit outdoor activities.'}
-                        </div>
-                    </div>
-                `;
-            } catch (error) {
-                document.getElementById('air-quality-content').innerHTML = '<div class="error">Unable to load air quality data</div>';
-            }
-        }
-
-        // Real News Headlines using NewsAPI
-        async function loadNews() {
-            try {
-                if (API_KEYS.newsapi && API_KEYS.newsapi !== 'YOUR_NEWSAPI_KEY_HERE') {
-                    // Real NewsAPI data
-                    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=in&pageSize=5&apiKey=${API_KEYS.newsapi}`);
-                    const data = await response.json();
-                    
-                    if (data.articles && data.articles.length > 0) {
-                        document.getElementById('news-content').innerHTML = data.articles.map(article => `
-                            <div class="news-item">
-                                <div class="news-title">${article.title}</div>
-                                <div class="news-source">${article.source.name} • ${new Date(article.publishedAt).toLocaleDateString('en-IN')}</div>
-                            </div>
-                        `).join('');
-                        return;
-                    }
-                }
-                
-                // Fallback to alternative free news API
-                try {
-                    const response = await fetch('https://saurav.tech/NewsAPI/top-headlines/category/general/in.json');
-                    const data = await response.json();
-                    
-                    if (data.articles && data.articles.length > 0) {
-                        document.getElementById('news-content').innerHTML = data.articles.slice(0, 5).map(article => `
-                            <div class="news-item">
-                                <div class="news-title">${article.title}</div>
-                                <div class="news-source">${article.source.name} • ${new Date(article.publishedAt).toLocaleDateString('en-IN')}</div>
-                            </div>
-                        `).join('');
-                        return;
-                    }
-                } catch (fallbackError) {
-                    console.log('Fallback news API failed:', fallbackError);
-                }
-                
-                // Final fallback - mock data
-                const mockNews = [
-                    { title: "India's GDP Growth Exceeds Expectations for Q4", source: "Economic Times", date: new Date() },
-                    { title: "Monsoon Forecast: Above Normal Rainfall Expected", source: "Weather India", date: new Date() },
-                    { title: "New Education Policy Shows Promising Results", source: "The Hindu", date: new Date() },
-                    { title: "Tech Sector Hiring Surges in Major Cities", source: "Business Standard", date: new Date() },
-                    { title: "Infrastructure Projects Fast-tracked Across States", source: "Indian Express", date: new Date() }
-                ];
-                
-                document.getElementById('news-content').innerHTML = mockNews.map(item => `
-                    <div class="news-item">
-                        <div class="news-title">${item.title}</div>
-                        <div class="news-source">${item.source} • ${item.date.toLocaleDateString('en-IN')}</div>
-                    </div>
-                `).join('');
-                
-            } catch (error) {
-                console.error('News error:', error);
-                document.getElementById('news-content').innerHTML = '<div class="error">Unable to load news data</div>';
-            }
-        }
-
-        // Real Indian Holidays API
-        async function loadHolidays() {
-            try {
-                const today = new Date();
-                const year = today.getFullYear();
-                
-                // Try to get real holiday data from API Ninjas
-                if (API_KEYS.apininjas && API_KEYS.apininjas !== 'YOUR_APININJAS_KEY_HERE') {
-                    try {
-                        
-                        const response = await fetch(`https://api.api-ninjas.com/v1/holidays?country=IN&year=${year}`, {
-                            headers: {
-                                'X-Api-Key': API_KEYS.apininjas
-                            }
-                        });
-                        const holidays = await response.json();
-                        
-                        // Find today's holidays
-                        const todayStr = today.toISOString().split('T')[0];
-                        const todaysHolidays = holidays.filter(holiday => holiday.date === todayStr);
-                        
-                        if (todaysHolidays.length > 0) {
-                            document.getElementById('holidays-content').innerHTML = `
-                                <div style="text-align: center; padding: 2rem;">
-                                    <div style="font-size: 2rem; margin-bottom: 1rem;">🎉</div>
-                                    ${todaysHolidays.map(holiday => `
-                                        <div style="font-size: 1.2rem; font-weight: 600; color: var(--text-accent); margin-bottom: 0.5rem;">${holiday.name}</div>
-                                    `).join('')}
-                                    <div style="color: var(--text-secondary); margin-top: 0.5rem;">Happy Holiday!</div>
-                                </div>
-                            `;
-                            return;
-                        }
-                    } catch (apiError) {
-                        console.log('Holiday API error:', apiError);
-                    }
-                }
-                
-                // Fallback to manual holiday data
-                const month = today.getMonth() + 1;
-                const day = today.getDate();
-                
-                const holidays = {
-                    '1-26': 'Republic Day',
-                    '8-15': 'Independence Day',
-                    '10-2': 'Gandhi Jayanti',
-                    '11-12': 'Diwali',
-                    '3-8': 'Holi',
-                    '12-25': 'Christmas Day',
-                    '1-1': 'New Year\'s Day',
-                    '5-1': 'Labour Day'
-                };
-                
-                const todayKey = `${month}-${day}`;
-                const holiday = holidays[todayKey];
-                
-                if (holiday) {
-                    document.getElementById('holidays-content').innerHTML = `
-                        <div style="text-align: center; padding: 2rem;">
-                            <div style="font-size: 2rem; margin-bottom: 1rem;">🎉</div>
-                            <div style="font-size: 1.2rem; font-weight: 600; color: var(--text-accent);">${holiday}</div>
-                            <div style="color: var(--text-secondary); margin-top: 0.5rem;">Happy ${holiday}!</div>
-                        </div>
-                    `;
-                } else {
-                    document.getElementById('holidays-content').innerHTML = `
-                        <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
-                            <div style="font-size: 2rem; margin-bottom: 1rem;">📅</div>
-                            <div>No major holidays today</div>
-                            <div style="font-size: 0.9rem; margin-top: 0.5rem;">Next: Check back tomorrow</div>
-                        </div>
-                    `;
-                }
-            } catch (error) {
-                console.error('Holidays error:', error);
-                document.getElementById('holidays-content').innerHTML = '<div class="error">Unable to load holiday data</div>';
-            }
-        }
-
-        // Real Today in History using ZenQuotes API (free)
-        async function loadHistory() {
-            try {
-                const today = new Date();
-                const month = today.getMonth() + 1;
-                const day = today.getDate();
-                
-                // Free Today in History API
-                const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-                const response = await fetch(proxyUrl + apiUrl, {
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest' // Some proxies need this
-                    }
-                });
-                const data = await response.json();
-                
-                if (data && data.data && data.data.Events && data.data.Events.length > 0) {
-                    const events = data.data.Events.slice(0, 3); // Take first 3 events
-                    
-                    document.getElementById('history-content').innerHTML = events.map(event => `
-                        <div class="history-item">
-                            <div class="history-year">${event.year}</div>
-                            <div>${event.text}</div>
-                        </div>
-                    `).join('');
-                } else {
-                    // Fallback to curated historical events
-                    const historicalEvents = [
-                        { year: 1947, event: "India gains independence from British rule" },
-                        { year: 1969, event: "First man lands on the moon" },
-                        { year: 2000, event: "Y2K celebrations around the world" },
-                        { year: 1885, event: "Indian National Congress founded" },
-                        { year: 1973, event: "First mobile phone call made" },
-                        { year: 1991, event: "World Wide Web becomes publicly available" },
-                        { year: 1950, event: "India becomes a republic" }
-                    ];
-                    
-                    const shuffled = historicalEvents.sort(() => 0.5 - Math.random());
-                    const selectedEvents = shuffled.slice(0, 3);
-                    
-                    document.getElementById('history-content').innerHTML = selectedEvents.map(item => `
-                        <div class="history-item">
-                            <div class="history-year">${item.year}</div>
-                            <div>${item.event}</div>
-                        </div>
-                    `).join('');
-                }
-            } catch (error) {
-                console.error('History error:', error);
-                // Fallback data
-                const fallbackEvents = [
-                    { year: 1947, event: "India gains independence from British rule" },
-                    { year: 1969, event: "First man lands on the moon" },
-                    { year: 2000, event: "Y2K celebrations around the world" }
-                ];
-                
-                document.getElementById('history-content').innerHTML = fallbackEvents.map(item => `
-                    <div class="history-item">
-                        <div class="history-year">${item.year}</div>
-                        <div>${item.event}</div>
-                    </div>
-                `).join('');
-            }
-        }
-
-        // Trending Searches (mock data)
-        async function loadTrending() {
-            try {
-                const trendingSearches = [
-                    "Cricket World Cup",
-                    "Bollywood Movies 2025",
-                    "Stock Market Today",
-                    "Weather Forecast",
-                    "IPL Auction",
-                    "Education Loans",
-                    "Travel Guidelines",
-                    "Health Insurance",
-                    "Electric Vehicles",
-                    "Cryptocurrency News"
-                ];
-                
-                document.getElementById('trending-content').innerHTML = trendingSearches.slice(0, 8).map((item, index) => `
-                    <div class="trending-item">
-                        <div class="trending-rank">${index + 1}</div>
-                        <div>${item}</div>
-                    </div>
-                `).join('');
-            } catch (error) {
-                document.getElementById('trending-content').innerHTML = '<div class="error">Unable to load trending data</div>';
-            }
-        }
-
-        // Initialize dashboard
-        function initDashboard() {
-            updateDate();
-            loadWeather();
-            loadAirQuality();
-            loadNews();
-            loadHolidays();
-            loadHistory();
-            loadTrending();
+            document.body.appendChild(particle);
             
-            // Update date every minute
-            setInterval(updateDate, 60000);
+            const animation = particle.animate([
+                { transform: 'translateY(0px)', opacity: 1 },
+                { transform: `translateY(-${window.innerHeight + 100}px)`, opacity: 0 }
+            ], {
+                duration: Math.random() * 3000 + 2000,
+                easing: 'linear'
+            });
             
-            // Refresh data every hour
-            setInterval(() => {
-                loadWeather();
-                loadAirQuality();
-                loadNews();
-            }, 3600000);
+            animation.onfinish = () => particle.remove();
         }
 
-        // Start the dashboard when page loads
-        document.addEventListener('DOMContentLoaded', initDashboard);
+        // Create particles occasionally
+        setInterval(createParticle, 3000);
     </script>
 </body>
 </html>
