@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: #f2f2f2;
+      padding: 40px;
+    }
+
+    .resume-container {
+      background: white;
+      max-width: 900px;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: row;
+      padding: 30px;
+      border-radius: 12px;
+    }
+
+    .left-column, .right-column {
+      width: 48%;
+      padding: 20px;
+    }
+
+    .divider {
+      width: 2px;
+      background-color: #ddd;
+      margin: 0 1%;
+    }
+
+    .section-box {
+      margin-bottom: 30px;
+    }
+
+    .section-box h2 {
+      font-size: 20px;
+      color: #2c3e50;
+      margin-bottom: 8px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    .section-box p, .section-box li {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .header-name {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 10px;
+    }
+
+    .info-label {
+      font-weight: 500;
+      color: #555;
+    }
+
+    .skills-list, .project-list, .experience-list, .edu-list {
+      list-style: disc;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume-container">
+    <div class="left-column">
+      <div class="section-box">
+        <div class="header-name">{{firstName}} {{lastName}}</div>
+        <p><span class="info-label">Email:</span> {{email}}</p>
+        <p><span class="info-label">Phone:</span> {{phone}}</p>
+        <p><span class="info-label">City:</span> {{city}}</p>
+        <p><span class="info-label">LinkedIn:</span> {{linkedin}}</p>
+      </div>
+
+      <div class="section-box">
+        <h2>Education</h2>
+        <ul class="edu-list">
+          <li><strong>{{degree}}</strong> at {{institution}} ({{edu_year}}) - Grade: {{edu_grade}}</li>
+        </ul>
+      </div>
+
+      <div class="section-box">
+        <h2>Experience</h2>
+        <ul class="experience-list">
+          <li><strong>{{job_title}}</strong> at {{company}} ({{job_duration}}) - {{job_location}}<br/>{{job_desc}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="right-column">
+      <div class="section-box">
+        <h2>Professional Summary</h2>
+        <p>{{summary}}</p>
+      </div>
+
+      <div class="section-box">
+        <h2>Projects</h2>
+        <ul class="project-list">
+          <li><strong>{{project_name}}</strong> - {{project_tech}}<br/>{{project_desc}}<br/>Link: {{project_link}}</li>
+        </ul>
+      </div>
+
+      <div class="section-box">
+        <h2>Skills</h2>
+        <p>{{skills}}</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

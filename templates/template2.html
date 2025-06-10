@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Template 2</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      padding: 40px;
+      background: #f4f4f4;
+    }
+    .resume {
+      background: #fff;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .header {
+      text-align: center;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+    .header h1 {
+      font-size: 2.5em;
+      color: #333;
+    }
+    .header h2 {
+      font-size: 1.3em;
+      color: #007acc;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .section-title {
+      font-size: 1.2em;
+      color: #007acc;
+      margin-bottom: 10px;
+      border-left: 4px solid #007acc;
+      padding-left: 10px;
+      font-weight: 600;
+    }
+    .section-content p,
+    .section-content li {
+      font-size: 0.95em;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    .section-content ul {
+      padding-left: 20px;
+    }
+    .info-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .info-grid div {
+      width: 48%;
+    }
+    .divider {
+      height: 1px;
+      background: #ccc;
+      margin: 30px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume">
+    <div class="header">
+      <h1>{{firstName}} {{lastName}}</h1>
+      <h2>{{applyingFor}}</h2>
+    </div>
+
+    <div class="info-grid">
+      <div><strong>Email:</strong> {{email}}</div>
+      <div><strong>Phone:</strong> {{phone}}</div>
+      <div><strong>City:</strong> {{city}}</div>
+      <div><strong>LinkedIn:</strong> {{linkedin}}</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section">
+      <div class="section-title">Professional Summary</div>
+      <div class="section-content">
+        <p>{{summary}}</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Education</div>
+      <div class="section-content">
+        <ul>
+          {{#each education}}
+          <li><strong>{{degree}}</strong> at {{institution}} ({{year}}) — CGPA: {{cgpa}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Experience</div>
+      <div class="section-content">
+        <ul>
+          {{#each experience}}
+          <li><strong>{{jobTitle}}</strong> at {{company}} ({{duration}}) — {{location}}<br>{{description}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Projects</div>
+      <div class="section-content">
+        <ul>
+          {{#each projects}}
+          <li><strong>{{name}}</strong> [{{technologies}}]<br>{{description}} <br><em>{{link}}</em></li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Skills</div>
+      <div class="section-content">
+        <p>{{skills}}</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">References</div>
+      <div class="section-content">
+        <ul>
+          {{#each references}}
+          <li>{{name}} — {{designation}}, {{company}} ({{contact}})</li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
