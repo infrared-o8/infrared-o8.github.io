@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cookie Policy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-primary: #6366f1;
+      --color-secondary: #f59e0b;
+      --color-dark: #0f0f23;
+      --color-light: #1a1a2e;
+      --color-text: #e2e8f0;
+      --color-muted: #94a3b8;
+      --color-glass: rgba(255, 255, 255, 0.1);
+      --shadow-default: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--color-dark);
+      color: var(--color-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+      z-index: -1;
+      animation: pulseBg 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulseBg {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.6; }
+    }
+
+    main {
+      max-width: 720px;
+      margin: 7rem auto 3rem;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.02);
+      border-radius: 1rem;
+      box-shadow: var(--shadow-default);
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glowTitle 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowTitle {
+      from { filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.3)); }
+      to { filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.6)); }
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--color-text);
+    }
+
+    p, li {
+      color: var(--color-muted);
+      margin-bottom: 1rem;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--color-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      main {
+        margin-top: 5rem;
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <h1>Cookie Policy</h1>
+
+    <p>This website uses cookies to enhance your experience. By using our site, you consent to the use of cookies.</p>
+
+    <h2>What Are Cookies?</h2>
+    <p>Cookies are small text files stored on your device by websites you visit. They help websites remember preferences and improve usability.</p>
+
+    <h2>How We Use Cookies</h2>
+    <ul>
+      <li>To remember user preferences (like selected template).</li>
+      <li>To track usage analytics (anonymously).</li>
+      <li>To improve our services over time.</li>
+    </ul>
+
+    <h2>Your Options</h2>
+    <p>You can disable cookies through your browser settings. Note that disabling some cookies may affect functionality.</p>
+
+    <p>Last updated: 6/10/2025</p>
+  </main>
+
+  <footer>
+    &copy; 2025 ResumeForge. All rights reserved.
+  </footer>
+
+</body>
+</html>

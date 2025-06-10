@@ -392,8 +392,9 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Service</a></li>
+                <li><a href="cookies.html">About Cookies</a></li>
             </ul>
         </nav>
     </header>
@@ -521,7 +522,18 @@
             // Redirect to the resume builder
             window.location.href = 'builder.html';
         }
-
+        function redirectToCookies() {
+            // Redirect to the resume builder
+            window.location.href = 'cookies.html';
+        }
+        function redirectToTOS() {
+            // Redirect to the resume builder
+            window.location.href = 'terms.html';
+        }
+        function redirectToPrivacy() {
+            // Redirect to the resume builder
+            window.location.href = 'privacy.html';
+        }
         function closeModal() {
             document.getElementById('comingSoonModal').style.display = 'none';
         }
