@@ -1,29 +1,4 @@
-// Real Trending Searches - using Google Trends alternative
-        async function loadTrending() {
-            try {
-                // Since Google Trends API requires server-side implementation,
-                // we'll use a curated list of current trending topics in India
-                // You could replace this with a trends API service
-                
-                const currentTrends = [
-                    "Cricket World Cup 2025",
-                    "Bollywood Box Office",
-                    "Stock Market India",
-                    "Monsoon Update",
-                    "IPL 2025 Schedule",
-                    "Electric Vehicle Subsidies",
-                    "Aadhaar Update",
-                    "Income Tax Calculator",
-                    "Train Ticket Booking",
-                    "Cryptocurrency Regulation",
-                    "Job Vacancies Government",
-                    "Education Loan Interest"
-                ];
-                
-                // Shuffle to show different trends each time
-                const shuffled = currentTrends.sort(() => 0.5 - Math.random());
-                
-                document.getElementById('trending-content').innerHTML = shuffled.slice(0, 8).map((<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -421,7 +396,8 @@
         const API_KEYS = {
             newsapi: '4f5fba80d97c45059cb6132216d79a6a', // Get from newsapi.org
             openweather: 'f6fb7013366a2765a6209c0bc700774c', // Get from openweathermap.org
-            apininjas: '5CSrtFWLq4VJ+2KFtBHbYw==pPdLlPoq3TrY84b3' // Get from api.api-ninjas.com
+            apininjas: '5CSrtFWLq4VJ+2KFtBHbYw==pPdLlPoq3TrY84b3', // Get from api.api-ninjas.com
+            serpapi: 'c59d360db259872bed96932b985ac7412424553d99dc2038afc4bdf61159da52'  // Add this line
         };
 
         // Location settings
@@ -464,6 +440,67 @@
                 });
             });
         }
+        
+        async function loadTrending() {
+            try {
+                // First show loading state
+                document.getElementById('trending-content').innerHTML = '<div class="loading pulse">Loading trending searches...</div>';
+
+                // Replace with your actual SerpAPI key
+                const apiKey = 'YOUR_SERPAPI_KEY_HERE'; 
+                
+                // Make request to SerpAPI for Google Trends data
+                const response = await fetch(`https://serpapi.com/search?engine=google_trends&geo=IN&data_type=TIMESERIES&api_key=${apiKey}`);
+                
+                if (!response.ok) {
+                    throw new Error(`API request failed with status ${response.status}`);
+                }
+
+                const data = await response.json();
+                
+                // Check if we got trending searches data
+                if (data.trending_searches) {
+                    const trends = data.trending_searches.slice(0, 8); // Get top 8 trends
+                    
+                    document.getElementById('trending-content').innerHTML = trends.map((item, index) => `
+                        <div class="trending-item">
+                            <div class="trending-rank">${index + 1}</div>
+                            <div>${item.title || item.query}</div>
+                        </div>
+                    `).join('');
+                } else {
+                    // Fallback to mock data if no trends found
+                    loadMockTrends();
+                }
+            } catch (error) {
+                console.error('Trending error:', error);
+                // Fallback to mock data if API fails
+                loadMockTrends();
+            }
+        }
+
+        // Fallback function with mock data
+        function loadMockTrends() {
+            const currentTrends = [
+                "Cricket World Cup 2025",
+                "Bollywood Box Office",
+                "Stock Market India",
+                "Monsoon Update",
+                "IPL 2025 Schedule",
+                "Electric Vehicle Subsidies",
+                "Aadhaar Update",
+                "Income Tax Calculator"
+            ];
+            
+            document.getElementById('trending-content').innerHTML = currentTrends.map((item, index) => `
+                <div class="trending-item">
+                    <div class="trending-rank">${index + 1}</div>
+                    <div>${item}</div>
+                </div>
+            `).join('');
+        }
+
+
 
         // Weather API with real OpenWeatherMap data
         async function loadWeather() {
