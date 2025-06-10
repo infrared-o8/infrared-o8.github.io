@@ -440,7 +440,7 @@
                 });
             });
         }
-        
+
         async function loadTrending() {
             try {
                 // First show loading state
@@ -728,6 +728,7 @@
                 // Try to get real holiday data from API Ninjas
                 if (API_KEYS.apininjas && API_KEYS.apininjas !== 'YOUR_APININJAS_KEY_HERE') {
                     try {
+                        
                         const response = await fetch(`https://api.api-ninjas.com/v1/holidays?country=IN&year=${year}`, {
                             headers: {
                                 'X-Api-Key': API_KEYS.apininjas
@@ -805,7 +806,12 @@
                 const day = today.getDate();
                 
                 // Free Today in History API
-                const response = await fetch(`https://today.zenquotes.io/api/${month}/${day}`);
+                const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+                const response = await fetch(proxyUrl + apiUrl, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest' // Some proxies need this
+                    }
+                });
                 const data = await response.json();
                 
                 if (data && data.data && data.data.Events && data.data.Events.length > 0) {
