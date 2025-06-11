@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1ZCVC00N3L"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -50,165 +52,6 @@
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-        }
-
-        .modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: var(--bg-light);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 90vw;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            animation: modalSlideIn 0.3s ease-out;
-        }
-
-        @keyframes modalSlideIn {
-            from { opacity: 0; transform: scale(0.9) translateY(-20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        .modal-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .modal-header h2 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .modal-header p {
-            color: var(--text-dim);
-            font-size: 1.1rem;
-        }
-
-        .templates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .template-card {
-            background: var(--glass);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .template-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
-        }
-
-        .template-card.selected {
-            border-color: var(--primary);
-            background: rgba(99, 102, 241, 0.1);
-        }
-
-        .template-preview {
-            width: 100%;
-            height: 200px;
-            background: white;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #333;
-            font-size: 0.8rem;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .template-preview iframe {
-            width: 100%;
-            height: 400px;
-            transform: scale(0.5);
-            transform-origin: top left;
-            border: none;
-            pointer-events: none;
-        }
-
-        .template-info h3 {
-            color: var(--text);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .template-info p {
-            color: var(--text-dim);
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-
-        .template-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .feature-tag {
-            background: rgba(99, 102, 241, 0.2);
-            color: var(--primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 500;
-        }
-
-        .modal-actions {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-dim);
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .close-modal:hover {
-            color: var(--text);
         }
 
         /* Header */
@@ -395,7 +238,7 @@
 
         .section-header {
             display: flex;
-            justify-content: space-between;
+            justify-content: between;
             align-items: center;
             margin-bottom: 1rem;
         }
@@ -417,34 +260,85 @@
 
         /* Preview Styles */
         .preview-container {
+            background: white;
+            color: #1f2937;
             border-radius: 8px;
+            padding: 2rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             max-width: 800px;
             margin: 0 auto;
-            overflow: hidden;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
-        .preview-container iframe {
-            width: 100%;
-            height: 1000px;
-            border: none;
-            background: white;
+        .resume-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--primary);
         }
 
-        .template-selector {
-            background: var(--glass);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 1rem;
+        .resume-name {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-contact {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            color: #6b7280;
+            font-size: 0.9rem;
         }
 
-        .current-template {
-            color: var(--text);
-            font-weight: 500;
+        .resume-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .resume-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .resume-item {
+            margin-bottom: 1rem;
+        }
+
+        .resume-item h4 {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .resume-item .meta {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .resume-item p {
+            color: #4b5563;
+            margin-top: 0.25rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
         }
 
         /* Mobile Responsive */
@@ -459,10 +353,6 @@
             }
 
             .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .templates-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -481,51 +371,13 @@
             margin: 1rem 0;
             text-align: center;
         }
-
-        /* Loading spinner */
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-left: 4px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 2rem auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
     </style>
 </head>
 <body>
-    <!-- Template Selection Modal -->
-    <div id="templateModal" class="modal active">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeTemplateModal()">&times;</button>
-            <div class="modal-header">
-                <h2>🎨 Choose Your Resume Template</h2>
-                <p>Select a professional template that matches your style and industry</p>
-            </div>
-            
-            <div class="templates-grid" id="templatesGrid">
-                <div class="spinner"></div>
-            </div>
-            
-            <div class="modal-actions">
-                <button class="btn btn-primary" onclick="confirmTemplateSelection()" id="confirmBtn" disabled>
-                    ✨ Start Building with Selected Template
-                </button>
-            </div>
-        </div>
-    </div>
-
     <header>
         <nav>
             <div class="logo">ResumeForge</div>
             <div class="nav-actions">
-                <button class="btn btn-secondary btn-small" onclick="changeTemplate()">🎨 Change Template</button>
                 <button class="btn btn-secondary btn-small" onclick="clearForm()">🗑️ Clear</button>
                 <button class="btn btn-success btn-small" onclick="downloadPDF()">📄 Download PDF</button>
             </div>
@@ -535,13 +387,6 @@
     <div class="container">
         <!-- Form Section -->
         <div class="form-section">
-            <div class="template-selector">
-                <div>
-                    <span class="current-template">Current Template: <span id="currentTemplateName">Loading...</span></span>
-                </div>
-                <small style="color: var(--text-dim);">Auto-saving your progress...</small>
-            </div>
-
             <form id="resumeForm">
                 <!-- Personal Information -->
                 <div class="form-card">
@@ -693,353 +538,272 @@
         <!-- Preview Section -->
         <div class="preview-section">
             <div class="preview-container" id="resumePreview">
-                <iframe id="previewFrame" src="about:blank"></iframe>
+                <div class="resume-header">
+                    <div class="resume-name" id="previewName">Your Name</div>
+                    <div class="resume-contact" id="previewContact">
+                        <span>your.email@example.com</span>
+                        <span>+1 (555) 123-4567</span>
+                        <span>City, Country</span>
+                    </div>
+                </div>
+
+                <div class="resume-section" id="summarySection" style="display: none;">
+                    <h3>Professional Summary</h3>
+                    <p id="previewSummary"></p>
+                </div>
+
+                <div class="resume-section" id="educationSection">
+                    <h3>Education</h3>
+                    <div id="previewEducation"></div>
+                </div>
+
+                <div class="resume-section" id="experienceSection" style="display: none;">
+                    <h3>Experience</h3>
+                    <div id="previewExperience"></div>
+                </div>
+
+                <div class="resume-section" id="projectsSection" style="display: none;">
+                    <h3>Projects</h3>
+                    <div id="previewProjects"></div>
+                </div>
+
+                <div class="resume-section" id="skillsSection" style="display: none;">
+                    <h3>Skills</h3>
+                    <div class="skills-list" id="previewSkills"></div>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Global variables
-        let selectedTemplate = null;
-        let currentTemplateData = null;
-        let availableTemplates = [];
-        let autoSaveInterval = null;
-
-        // Template definitions (in a real app, this would come from your server)
-        const templateDefinitions = [
-            {
-                id: 'template1',
-                name: 'Modern Professional',
-                description: 'Clean and modern design perfect for tech and business professionals',
-                features: ['ATS-Friendly', 'Clean Layout', 'Professional'],
-                file: 'templates/template1.html'
-            },
-            {
-                id: 'template2',
-                name: 'Creative Designer',
-                description: 'Stylish and creative layout ideal for designers and creative roles',
-                features: ['Creative', 'Visual Impact', 'Modern'],
-                file: 'templates/template2.html'
-            },
-            {
-                id: 'template3',
-                name: 'Executive Classic',
-                description: 'Traditional and sophisticated design for senior-level positions',
-                features: ['Executive', 'Classic', 'Sophisticated'],
-                file: 'templates/template3.html'
-            },
-            {
-                id: 'template4',
-                name: 'Minimalist Clean',
-                description: 'Ultra-clean minimalist design focusing on content over decoration',
-                features: ['Minimalist', 'Clean', 'Content-Focused'],
-                file: 'templates/template4.html'
-            }
-        ];
-
-        // Initialize app
+        // Real-time preview updates
         document.addEventListener('DOMContentLoaded', function() {
-            loadAvailableTemplates();
-            setupFormListeners();
-            loadSavedData();
-        });
-
-        // Load available templates
-        async function loadAvailableTemplates() {
-            const templatesGrid = document.getElementById('templatesGrid');
-            templatesGrid.innerHTML = '';
-
-            for (const template of templateDefinitions) {
-                const templateCard = document.createElement('div');
-                templateCard.className = 'template-card';
-                templateCard.onclick = () => selectTemplate(template.id);
-                
-                templateCard.innerHTML = `
-                    <div class="template-preview">
-                        <iframe src="${template.file}" sandbox="allow-same-origin"></iframe>
-                    </div>
-                    <div class="template-info">
-                        <h3>${template.name}</h3>
-                        <p>${template.description}</p>
-                        <div class="template-features">
-                            ${template.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
-                        </div>
-                    </div>
-                `;
-                
-                templatesGrid.appendChild(templateCard);
-                availableTemplates.push(template);
-            }
-        }
-
-        // Select template
-        function selectTemplate(templateId) {
-            // Remove previous selection
-            document.querySelectorAll('.template-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            
-            // Add selection to clicked card
-            event.currentTarget.classList.add('selected');
-            selectedTemplate = templateId;
-            
-            // Enable confirm button
-            document.getElementById('confirmBtn').disabled = false;
-        }
-
-        // Confirm template selection
-        async function confirmTemplateSelection() {
-            if (!selectedTemplate) return;
-            
-            const template = availableTemplates.find(t => t.id === selectedTemplate);
-            if (!template) return;
-            
-            // Save selected template
-            saveToStorage('selectedTemplate', selectedTemplate);
-            
-            // Load template content
-            try {
-                const response = await fetch(template.file);
-                currentTemplateData = await response.text();
-                
-                // Update UI
-                document.getElementById('currentTemplateName').textContent = template.name;
-                closeTemplateModal();
-                
-                // Update preview
-                updatePreview();
-                
-                // Start auto-save
-                startAutoSave();
-                
-                showSuccessMessage(`Template "${template.name}" loaded successfully!`);
-            } catch (error) {
-                console.error('Error loading template:', error);
-                showErrorMessage('Failed to load template. Please try again.');
-            }
-        }
-
-        // Close template modal
-        function closeTemplateModal() {
-            document.getElementById('templateModal').classList.remove('active');
-        }
-
-        // Change template
-        function changeTemplate() {
-            document.getElementById('templateModal').classList.add('active');
-        }
-
-        // Setup form listeners
-        function setupFormListeners() {
             const form = document.getElementById('resumeForm');
             const inputs = form.querySelectorAll('input, textarea');
             
             inputs.forEach(input => {
-                input.addEventListener('input', debounce(updatePreview, 300));
-                input.addEventListener('input', debounce(saveFormData, 1000));
+                input.addEventListener('input', updatePreview);
             });
-        }
+            
+            updatePreview();
+        });
 
-        // Update preview with template
         function updatePreview() {
-            if (!currentTemplateData) return;
+            // Personal Information
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const city = document.getElementById('city').value;
+            const linkedin = document.getElementById('linkedin').value;
+
+            document.getElementById('previewName').textContent = 
+                firstName || lastName ? `${firstName} ${lastName}`.trim() : 'Your Name';
+
+            const contactInfo = [];
+            if (email) contactInfo.push(email);
+            if (phone) contactInfo.push(phone);
+            if (city) contactInfo.push(city);
+            if (linkedin) contactInfo.push('LinkedIn Profile');
+
+            document.getElementById('previewContact').innerHTML = 
+                contactInfo.length ? contactInfo.map(info => `<span>${info}</span>`).join('') : 
+                '<span>your.email@example.com</span><span>+1 (555) 123-4567</span><span>City, Country</span>';
+
+            // Summary
+            const summary = document.getElementById('summary').value;
+            const summarySection = document.getElementById('summarySection');
+            if (summary.trim()) {
+                document.getElementById('previewSummary').textContent = summary;
+                summarySection.style.display = 'block';
+            } else {
+                summarySection.style.display = 'none';
+            }
+
+            // Education
+            updateEducationPreview();
             
-            const formData = getFormData();
-            let templateHTML = currentTemplateData;
+            // Experience
+            updateExperiencePreview();
             
-            // Replace template variables
-            templateHTML = templateHTML.replace(/\{\{firstName\}\}/g, formData.firstName || '');
-            templateHTML = templateHTML.replace(/\{\{lastName\}\}/g, formData.lastName || '');
-            templateHTML = templateHTML.replace(/\{\{fullName\}\}/g, `${formData.firstName || ''} ${formData.lastName || ''}`.trim() || 'Your Name');
-            templateHTML = templateHTML.replace(/\{\{email\}\}/g, formData.email || '');
-            templateHTML = templateHTML.replace(/\{\{phone\}\}/g, formData.phone || '');
-            templateHTML = templateHTML.replace(/\{\{city\}\}/g, formData.city || '');
-            templateHTML = templateHTML.replace(/\{\{linkedin\}\}/g, formData.linkedin || '');
-            templateHTML = templateHTML.replace(/\{\{summary\}\}/g, formData.summary || '');
+            // Projects
+            updateProjectsPreview();
             
-            // Handle education
-            let educationHTML = '';
-            formData.education.forEach(edu => {
-                if (edu.degree || edu.institution) {
-                    educationHTML += `
-                        <div class="education-item">
-                            <h4>${edu.degree || 'Course/Degree'}</h4>
-                            <div class="meta">${edu.institution || 'Institution'} ${edu.duration ? `• ${edu.duration}` : ''}</div>
-                            ${edu.grade ? `<p>Grade: ${edu.grade}</p>` : ''}
-                        </div>
-                    `;
-                }
-            });
-            templateHTML = templateHTML.replace(/\{\{education\}\}/g, educationHTML);
-            
-            // Handle experience
-            let experienceHTML = '';
-            formData.experience.forEach(exp => {
-                if (exp.jobTitle || exp.company || exp.jobDescription) {
-                    experienceHTML += `
-                        <div class="experience-item">
-                            <h4>${exp.jobTitle || 'Job Title'}</h4>
-                            <div class="meta">${exp.company || 'Company'} ${exp.workDuration ? `• ${exp.workDuration}` : ''} ${exp.location ? `• ${exp.location}` : ''}</div>
-                            ${exp.jobDescription ? `<p>${exp.jobDescription}</p>` : ''}
-                        </div>
-                    `;
-                }
-            });
-            templateHTML = templateHTML.replace(/\{\{experience\}\}/g, experienceHTML);
-            
-// Handle projects
-            let projectsHTML = '';
-            formData.projects.forEach(proj => {
-                if (proj.projectName || proj.projectDescription) {
-                    projectsHTML += `
-                        <div class="project-item">
-                            <h4>${proj.projectName || 'Project Name'}</h4>
-                            ${proj.technologies ? `<div class="meta">Technologies: ${proj.technologies}</div>` : ''}
-                            ${proj.projectDescription ? `<p>${proj.projectDescription}</p>` : ''}
-                            ${proj.projectLink ? `<a href="${proj.projectLink}" target="_blank">View Project</a>` : ''}
-                        </div>
-                    `;
-                }
-            });
-            templateHTML = templateHTML.replace(/\{\{projects\}\}/g, projectsHTML);
-            
-            // Handle skills
-            const skillsArray = formData.skills ? formData.skills.split(',').map(skill => skill.trim()).filter(skill => skill) : [];
-            const skillsHTML = skillsArray.map(skill => `<span class="skill-tag">${skill}</span>`).join('');
-            templateHTML = templateHTML.replace(/\{\{skills\}\}/g, skillsHTML);
-            
-            // Update preview iframe
-            const previewFrame = document.getElementById('previewFrame');
-            const doc = previewFrame.contentDocument || previewFrame.contentWindow.document;
-            doc.open();
-            doc.write(templateHTML);
-            doc.close();
+            // Skills
+            updateSkillsPreview();
         }
 
-        // Get form data
-        function getFormData() {
-            const formData = {
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                city: document.getElementById('city').value,
-                linkedin: document.getElementById('linkedin').value,
-                summary: document.getElementById('summary').value,
-                skills: document.getElementById('skills').value,
-                education: [],
-                experience: [],
-                projects: []
-            };
+        function updateEducationPreview() {
+            const educationContainer = document.getElementById('educationContainer');
+            const educationSections = educationContainer.querySelectorAll('.dynamic-section');
+            const previewEducation = document.getElementById('previewEducation');
             
-            // Get education data
-            const educationSections = document.querySelectorAll('#educationContainer .dynamic-section');
+            previewEducation.innerHTML = '';
+            
             educationSections.forEach(section => {
-                const education = {
-                    degree: section.querySelector('input[name="degree"]').value,
-                    institution: section.querySelector('input[name="institution"]').value,
-                    duration: section.querySelector('input[name="duration"]').value,
-                    grade: section.querySelector('input[name="grade"]').value
-                };
-                formData.education.push(education);
+                const degree = section.querySelector('input[name="degree"]').value;
+                const institution = section.querySelector('input[name="institution"]').value;
+                const duration = section.querySelector('input[name="duration"]').value;
+                const grade = section.querySelector('input[name="grade"]').value;
+                
+                if (degree || institution) {
+                    const eduItem = document.createElement('div');
+                    eduItem.className = 'resume-item';
+                    eduItem.innerHTML = `
+                        <h4>${degree || 'Course/Degree'}</h4>
+                        <div class="meta">${institution || 'Institution'} ${duration ? `• ${duration}` : ''}</div>
+                        ${grade ? `<p>Grade: ${grade}</p>` : ''}
+                    `;
+                    previewEducation.appendChild(eduItem);
+                }
             });
-            
-            // Get experience data
-            const experienceSections = document.querySelectorAll('#experienceContainer .dynamic-section');
-            experienceSections.forEach(section => {
-                const experience = {
-                    jobTitle: section.querySelector('input[name="jobTitle"]').value,
-                    company: section.querySelector('input[name="company"]').value,
-                    workDuration: section.querySelector('input[name="workDuration"]').value,
-                    location: section.querySelector('input[name="location"]').value,
-                    jobDescription: section.querySelector('textarea[name="jobDescription"]').value
-                };
-                formData.experience.push(experience);
-            });
-            
-            // Get projects data
-            const projectSections = document.querySelectorAll('#projectsContainer .dynamic-section');
-            projectSections.forEach(section => {
-                const project = {
-                    projectName: section.querySelector('input[name="projectName"]').value,
-                    technologies: section.querySelector('input[name="technologies"]').value,
-                    projectDescription: section.querySelector('textarea[name="projectDescription"]').value,
-                    projectLink: section.querySelector('input[name="projectLink"]').value
-                };
-                formData.projects.push(project);
-            });
-            
-            return formData;
         }
 
-        // Add education section
+        function updateExperiencePreview() {
+            const experienceContainer = document.getElementById('experienceContainer');
+            const experienceSections = experienceContainer.querySelectorAll('.dynamic-section');
+            const previewExperience = document.getElementById('previewExperience');
+            const experienceSection = document.getElementById('experienceSection');
+            
+            previewExperience.innerHTML = '';
+            let hasExperience = false;
+            
+            experienceSections.forEach(section => {
+                const jobTitle = section.querySelector('input[name="jobTitle"]').value;
+                const company = section.querySelector('input[name="company"]').value;
+                const workDuration = section.querySelector('input[name="workDuration"]').value;
+                const location = section.querySelector('input[name="location"]').value;
+                const jobDescription = section.querySelector('textarea[name="jobDescription"]').value;
+                
+                if (jobTitle || company || jobDescription) {
+                    hasExperience = true;
+                    const expItem = document.createElement('div');
+                    expItem.className = 'resume-item';
+                    expItem.innerHTML = `
+                        <h4>${jobTitle || 'Job Title'}</h4>
+                        <div class="meta">${company || 'Company'} ${workDuration ? `• ${workDuration}` : ''} ${location ? `• ${location}` : ''}</div>
+                        ${jobDescription ? `<p>${jobDescription}</p>` : ''}
+                    `;
+                    previewExperience.appendChild(expItem);
+                }
+            });
+            
+            experienceSection.style.display = hasExperience ? 'block' : 'none';
+        }
+
+        function updateProjectsPreview() {
+            const projectsContainer = document.getElementById('projectsContainer');
+            const projectSections = projectsContainer.querySelectorAll('.dynamic-section');
+            const previewProjects = document.getElementById('previewProjects');
+            const projectsSection = document.getElementById('projectsSection');
+            
+            previewProjects.innerHTML = '';
+            let hasProjects = false;
+            
+            projectSections.forEach(section => {
+                const projectName = section.querySelector('input[name="projectName"]').value;
+                const technologies = section.querySelector('input[name="technologies"]').value;
+                const projectDescription = section.querySelector('textarea[name="projectDescription"]').value;
+                const projectLink = section.querySelector('input[name="projectLink"]').value;
+                
+                if (projectName || projectDescription) {
+                    hasProjects = true;
+                    const projItem = document.createElement('div');
+                    projItem.className = 'resume-item';
+                    projItem.innerHTML = `
+                        <h4>${projectName || 'Project Name'}</h4>
+                        <div class="meta">${technologies ? `Technologies: ${technologies}` : ''}</div>
+                        ${projectDescription ? `<p>${projectDescription}</p>` : ''}
+                        ${projectLink ? `<p><a href="${projectLink}" target="_blank" style="color: var(--primary);">View Project</a></p>` : ''}
+                    `;
+                    previewProjects.appendChild(projItem);
+                }
+            });
+            
+            projectsSection.style.display = hasProjects ? 'block' : 'none';
+        }
+
+        function updateSkillsPreview() {
+            const skills = document.getElementById('skills').value;
+            const previewSkills = document.getElementById('previewSkills');
+            const skillsSection = document.getElementById('skillsSection');
+            
+            if (skills.trim()) {
+                const skillsArray = skills.split(',').map(skill => skill.trim()).filter(skill => skill);
+                previewSkills.innerHTML = skillsArray.map(skill => 
+                    `<span class="skill-tag">${skill}</span>`
+                ).join('');
+                skillsSection.style.display = 'block';
+            } else {
+                skillsSection.style.display = 'none';
+            }
+        }
+
+        // Dynamic section management
         function addEducation() {
             const container = document.getElementById('educationContainer');
             const newSection = document.createElement('div');
             newSection.className = 'dynamic-section';
             newSection.innerHTML = `
                 <div class="section-header">
-                    <h4>Education Entry</h4>
-                    <button type="button" class="remove-btn" onclick="removeSection(this)">Remove</button>
+                    <button type="button" class="remove-btn" onclick="this.parentElement.parentElement.remove(); updatePreview();">Remove</button>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label>Degree/Course *</label>
-                        <input type="text" name="degree" required placeholder="e.g., Bachelor of Computer Science">
+                        <label>Degree/Course</label>
+                        <input type="text" name="degree" placeholder="e.g., Master of Business Administration">
                     </div>
                     <div class="form-group">
-                        <label>Institution *</label>
-                        <input type="text" name="institution" required placeholder="e.g., University of Technology">
+                        <label>Institution</label>
+                        <input type="text" name="institution" placeholder="e.g., Business School">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label>Year/Duration</label>
-                        <input type="text" name="duration" placeholder="e.g., 2020-2024">
+                        <input type="text" name="duration" placeholder="e.g., 2024-2026">
                     </div>
                     <div class="form-group">
                         <label>Grade/CGPA</label>
-                        <input type="text" name="grade" placeholder="e.g., 8.5 CGPA">
+                        <input type="text" name="grade" placeholder="e.g., 9.2 CGPA">
                     </div>
                 </div>
             `;
+            
             container.appendChild(newSection);
             
             // Add event listeners to new inputs
             newSection.querySelectorAll('input').forEach(input => {
-                input.addEventListener('input', debounce(updatePreview, 300));
-                input.addEventListener('input', debounce(saveFormData, 1000));
+                input.addEventListener('input', updatePreview);
             });
         }
 
-        // Add experience section
         function addExperience() {
             const container = document.getElementById('experienceContainer');
             const newSection = document.createElement('div');
             newSection.className = 'dynamic-section';
             newSection.innerHTML = `
                 <div class="section-header">
-                    <h4>Experience Entry</h4>
-                    <button type="button" class="remove-btn" onclick="removeSection(this)">Remove</button>
+                    <button type="button" class="remove-btn" onclick="this.parentElement.parentElement.remove(); updatePreview();">Remove</button>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label>Job Title</label>
-                        <input type="text" name="jobTitle" placeholder="e.g., Software Developer Intern">
+                        <input type="text" name="jobTitle" placeholder="e.g., Full Stack Developer">
                     </div>
                     <div class="form-group">
                         <label>Company</label>
-                        <input type="text" name="company" placeholder="e.g., Tech Solutions Inc.">
+                        <input type="text" name="company" placeholder="e.g., Innovative Tech Corp">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label>Duration</label>
-                        <input type="text" name="workDuration" placeholder="e.g., June 2023 - Aug 2023">
+                        <input type="text" name="workDuration" placeholder="e.g., Jan 2024 - Present">
                     </div>
                     <div class="form-group">
                         <label>Location</label>
-                        <input type="text" name="location" placeholder="e.g., Mumbai, India">
+                        <input type="text" name="location" placeholder="e.g., Bangalore, India">
                     </div>
                 </div>
                 <div class="form-group">
@@ -1047,33 +811,31 @@
                     <textarea name="jobDescription" placeholder="Describe your role, responsibilities, and achievements..."></textarea>
                 </div>
             `;
+            
             container.appendChild(newSection);
             
             // Add event listeners to new inputs
             newSection.querySelectorAll('input, textarea').forEach(input => {
-                input.addEventListener('input', debounce(updatePreview, 300));
-                input.addEventListener('input', debounce(saveFormData, 1000));
+                input.addEventListener('input', updatePreview);
             });
         }
 
-        // Add project section
         function addProject() {
             const container = document.getElementById('projectsContainer');
             const newSection = document.createElement('div');
             newSection.className = 'dynamic-section';
             newSection.innerHTML = `
                 <div class="section-header">
-                    <h4>Project Entry</h4>
-                    <button type="button" class="remove-btn" onclick="removeSection(this)">Remove</button>
+                    <button type="button" class="remove-btn" onclick="this.parentElement.parentElement.remove(); updatePreview();">Remove</button>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label>Project Name</label>
-                        <input type="text" name="projectName" placeholder="e.g., E-commerce Website">
+                        <input type="text" name="projectName" placeholder="e.g., AI Chatbot Application">
                     </div>
                     <div class="form-group">
                         <label>Technologies Used</label>
-                        <input type="text" name="technologies" placeholder="e.g., React, Node.js, MongoDB">
+                        <input type="text" name="technologies" placeholder="e.g., Python, TensorFlow, Flask">
                     </div>
                 </div>
                 <div class="form-group">
@@ -1085,176 +847,326 @@
                     <input type="url" name="projectLink" placeholder="https://github.com/yourname/project">
                 </div>
             `;
+            
             container.appendChild(newSection);
             
             // Add event listeners to new inputs
             newSection.querySelectorAll('input, textarea').forEach(input => {
-                input.addEventListener('input', debounce(updatePreview, 300));
-                input.addEventListener('input', debounce(saveFormData, 1000));
+                input.addEventListener('input', updatePreview);
             });
         }
 
-        // Remove section
-        function removeSection(button) {
-            const section = button.closest('.dynamic-section');
-            section.remove();
-            updatePreview();
-            saveFormData();
+        // PDF Generation
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF();
+            
+            // Get form data
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const city = document.getElementById('city').value;
+            const linkedin = document.getElementById('linkedin').value;
+            const summary = document.getElementById('summary').value;
+            const skills = document.getElementById('skills').value;
+            
+            let yPosition = 20;
+            const leftMargin = 20;
+            const rightMargin = 190;
+            const lineHeight = 7;
+            
+            // Helper function to add text with word wrapping
+            function addWrappedText(text, x, y, maxWidth, fontSize = 10) {
+                pdf.setFontSize(fontSize);
+                const lines = pdf.splitTextToSize(text, maxWidth);
+                pdf.text(lines, x, y);
+                return y + (lines.length * lineHeight);
+            }
+            
+            // Header
+            pdf.setFontSize(20);
+            pdf.setFont(undefined, 'bold');
+            pdf.text(`${firstName} ${lastName}`, leftMargin, yPosition);
+            yPosition += 10;
+            
+            pdf.setFontSize(10);
+            pdf.setFont(undefined, 'normal');
+            const contactInfo = [];
+            if (email) contactInfo.push(email);
+            if (phone) contactInfo.push(phone);
+            if (city) contactInfo.push(city);
+            if (linkedin) contactInfo.push('LinkedIn Profile');
+            
+            pdf.text(contactInfo.join(' | '), leftMargin, yPosition);
+            yPosition += 15;
+            
+            // Add a line
+            pdf.line(leftMargin, yPosition, rightMargin, yPosition);
+            yPosition += 10;
+            
+            // Summary
+            if (summary.trim()) {
+                pdf.setFontSize(14);
+                pdf.setFont(undefined, 'bold');
+                pdf.text('PROFESSIONAL SUMMARY', leftMargin, yPosition);
+                yPosition += 10;
+                
+                pdf.setFont(undefined, 'normal');
+                yPosition = addWrappedText(summary, leftMargin, yPosition, rightMargin - leftMargin, 10);
+                yPosition += 10;
+            }
+            
+            // Education
+            const educationSections = document.getElementById('educationContainer').querySelectorAll('.dynamic-section');
+            if (educationSections.length > 0) {
+                pdf.setFontSize(14);
+                pdf.setFont(undefined, 'bold');
+                pdf.text('EDUCATION', leftMargin, yPosition);
+                yPosition += 10;
+                
+                educationSections.forEach(section => {
+                    const degree = section.querySelector('input[name="degree"]').value;
+                    const institution = section.querySelector('input[name="institution"]').value;
+                    const duration = section.querySelector('input[name="duration"]').value;
+                    const grade = section.querySelector('input[name="grade"]').value;
+                    
+                    if (degree || institution) {
+                        pdf.setFontSize(11);
+                        pdf.setFont(undefined, 'bold');
+                        pdf.text(degree || 'Course/Degree', leftMargin, yPosition);
+                        yPosition += 6;
+                        
+                        pdf.setFont(undefined, 'normal');
+                        pdf.setFontSize(10);
+                        const eduDetails = [];
+                        if (institution) eduDetails.push(institution);
+                        if (duration) eduDetails.push(duration);
+                        if (grade) eduDetails.push(`Grade: ${grade}`);
+                        
+                        pdf.text(eduDetails.join(' | '), leftMargin, yPosition);
+                        yPosition += 8;
+                    }
+                });
+                yPosition += 5;
+            }
+            
+            // Experience
+            const experienceSections = document.getElementById('experienceContainer').querySelectorAll('.dynamic-section');
+            let hasExperience = false;
+            
+            experienceSections.forEach(section => {
+                const jobTitle = section.querySelector('input[name="jobTitle"]').value;
+                const company = section.querySelector('input[name="company"]').value;
+                const jobDescription = section.querySelector('textarea[name="jobDescription"]').value;
+                
+                if (jobTitle || company || jobDescription) {
+                    if (!hasExperience) {
+                        pdf.setFontSize(14);
+                        pdf.setFont(undefined, 'bold');
+                        pdf.text('EXPERIENCE', leftMargin, yPosition);
+                        yPosition += 10;
+                        hasExperience = true;
+                    }
+                    
+                    const workDuration = section.querySelector('input[name="workDuration"]').value;
+                    const location = section.querySelector('input[name="location"]').value;
+                    
+                    pdf.setFontSize(11);
+                    pdf.setFont(undefined, 'bold');
+                    pdf.text(jobTitle || 'Job Title', leftMargin, yPosition);
+                    yPosition += 6;
+                    
+                    pdf.setFont(undefined, 'normal');
+                    pdf.setFontSize(10);
+                    const expDetails = [];
+                    if (company) expDetails.push(company);
+                    if (workDuration) expDetails.push(workDuration);
+                    if (location) expDetails.push(location);
+                    
+                    pdf.text(expDetails.join(' | '), leftMargin, yPosition);
+                    yPosition += 6;
+                    
+                    if (jobDescription) {
+                        yPosition = addWrappedText(jobDescription, leftMargin, yPosition, rightMargin - leftMargin, 10);
+                    }
+                    yPosition += 8;
+                }
+            });
+            
+            if (hasExperience) yPosition += 5;
+            
+            // Projects
+            const projectSections = document.getElementById('projectsContainer').querySelectorAll('.dynamic-section');
+            let hasProjects = false;
+            
+            projectSections.forEach(section => {
+                const projectName = section.querySelector('input[name="projectName"]').value;
+                const projectDescription = section.querySelector('textarea[name="projectDescription"]').value;
+                
+                if (projectName || projectDescription) {
+                    if (!hasProjects) {
+                        pdf.setFontSize(14);
+                        pdf.setFont(undefined, 'bold');
+                        pdf.text('PROJECTS', leftMargin, yPosition);
+                        yPosition += 10;
+                        hasProjects = true;
+                    }
+                    
+                    const technologies = section.querySelector('input[name="technologies"]').value;
+                    const projectLink = section.querySelector('input[name="projectLink"]').value;
+                    
+                    pdf.setFontSize(11);
+                    pdf.setFont(undefined, 'bold');
+                    pdf.text(projectName || 'Project Name', leftMargin, yPosition);
+                    yPosition += 6;
+                    
+                    pdf.setFont(undefined, 'normal');
+                    pdf.setFontSize(10);
+                    if (technologies) {
+                        pdf.text(`Technologies: ${technologies}`, leftMargin, yPosition);
+                        yPosition += 6;
+                    }
+                    
+                    if (projectDescription) {
+                        yPosition = addWrappedText(projectDescription, leftMargin, yPosition, rightMargin - leftMargin, 10);
+                    }
+                    
+                    if (projectLink) {
+                        pdf.text(`Link: ${projectLink}`, leftMargin, yPosition);
+                        yPosition += 6;
+                    }
+                    yPosition += 8;
+                }
+            });
+            
+            if (hasProjects) yPosition += 5;
+            
+            // Skills
+            if (skills.trim()) {
+                pdf.setFontSize(14);
+                pdf.setFont(undefined, 'bold');
+                pdf.text('SKILLS', leftMargin, yPosition);
+                yPosition += 10;
+                
+                pdf.setFont(undefined, 'normal');
+                pdf.setFontSize(10);
+                const skillsArray = skills.split(',').map(skill => skill.trim()).filter(skill => skill);
+                yPosition = addWrappedText(skillsArray.join(' • '), leftMargin, yPosition, rightMargin - leftMargin, 10);
+            }
+            
+            // Save the PDF
+            const fileName = `${firstName}_${lastName}_Resume.pdf`.replace(/\s+/g, '_');
+            pdf.save(fileName);
+            
+            // Show success message
+            showSuccessMessage('Resume downloaded successfully!');
         }
-
+        
         // Clear form
         function clearForm() {
             if (confirm('Are you sure you want to clear all form data? This action cannot be undone.')) {
                 document.getElementById('resumeForm').reset();
                 
-                // Reset dynamic sections to have only one each
-                resetDynamicSections();
+                // Reset dynamic sections to just one each
+                document.getElementById('educationContainer').innerHTML = `
+                    <div class="dynamic-section">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Degree/Course *</label>
+                                <input type="text" name="degree" required placeholder="e.g., Bachelor of Computer Science">
+                            </div>
+                            <div class="form-group">
+                                <label>Institution *</label>
+                                <input type="text" name="institution" required placeholder="e.g., University of Technology">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Year/Duration</label>
+                                <input type="text" name="duration" placeholder="e.g., 2020-2024">
+                            </div>
+                            <div class="form-group">
+                                <label>Grade/CGPA</label>
+                                <input type="text" name="grade" placeholder="e.g., 8.5 CGPA">
+                            </div>
+                        </div>
+                    </div>
+                `;
                 
-                // Clear stored data
-                clearStoredData();
+                document.getElementById('experienceContainer').innerHTML = `
+                    <div class="dynamic-section">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Job Title</label>
+                                <input type="text" name="jobTitle" placeholder="e.g., Software Developer Intern">
+                            </div>
+                            <div class="form-group">
+                                <label>Company</label>
+                                <input type="text" name="company" placeholder="e.g., Tech Solutions Inc.">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Duration</label>
+                                <input type="text" name="workDuration" placeholder="e.g., June 2023 - Aug 2023">
+                            </div>
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input type="text" name="location" placeholder="e.g., Mumbai, India">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea name="jobDescription" placeholder="Describe your role, responsibilities, and achievements..."></textarea>
+                        </div>
+                    </div>
+                `;
                 
-                // Update preview
+                document.getElementById('projectsContainer').innerHTML = `
+                    <div class="dynamic-section">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Project Name</label>
+                                <input type="text" name="projectName" placeholder="e.g., E-commerce Website">
+                            </div>
+                            <div class="form-group">
+                                <label>Technologies Used</label>
+                                <input type="text" name="technologies" placeholder="e.g., React, Node.js, MongoDB">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Project Description</label>
+                            <textarea name="projectDescription" placeholder="Describe your project, your role, and key achievements..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Project Link (Optional)</label>
+                            <input type="url" name="projectLink" placeholder="https://github.com/yourname/project">
+                        </div>
+                    </div>
+                `;
+                
+                // Re-add event listeners
+                const inputs = document.querySelectorAll('#resumeForm input, #resumeForm textarea');
+                inputs.forEach(input => {
+                    input.addEventListener('input', updatePreview);
+                });
+                
                 updatePreview();
-                
                 showSuccessMessage('Form cleared successfully!');
             }
         }
-
-        // Reset dynamic sections
-        function resetDynamicSections() {
-            const containers = ['educationContainer', 'experienceContainer', 'projectsContainer'];
-            containers.forEach(containerId => {
-                const container = document.getElementById(containerId);
-                const sections = container.querySelectorAll('.dynamic-section');
-                
-                // Remove all but the first section
-                for (let i = 1; i < sections.length; i++) {
-                    sections[i].remove();
-                }
-                
-                // Clear the first section
-                const firstSection = container.querySelector('.dynamic-section');
-                if (firstSection) {
-                    firstSection.querySelectorAll('input, textarea').forEach(input => {
-                        input.value = '';
-                    });
-                }
-            });
-        }
-
-        // Download PDF
-        function downloadPDF() {
-            const previewFrame = document.getElementById('previewFrame');
-            const previewDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
-            
-            if (!previewDoc.body.innerHTML.trim()) {
-                showErrorMessage('Please fill in your information first!');
-                return;
-            }
-            
-            const { jsPDF } = window.jspdf;
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            
-            // Get the content from the preview
-            const content = previewDoc.body;
-            
-            // Use html2canvas alternative or basic text extraction
-            const textContent = content.innerText || content.textContent;
-            const lines = textContent.split('\n').filter(line => line.trim());
-            
-            let yPosition = 20;
-            const lineHeight = 6;
-            const maxWidth = 170;
-            
-            lines.forEach(line => {
-                if (yPosition > 280) {
-                    pdf.addPage();
-                    yPosition = 20;
-                }
-                
-                const splitText = pdf.splitTextToSize(line, maxWidth);
-                pdf.text(splitText, 20, yPosition);
-                yPosition += splitText.length * lineHeight + 2;
-            });
-            
-            // Get user name for filename
-            const firstName = document.getElementById('firstName').value || 'Resume';
-            const lastName = document.getElementById('lastName').value || '';
-            const filename = `${firstName}_${lastName}_Resume.pdf`.replace(/\s+/g, '_');
-            
-            pdf.save(filename);
-            showSuccessMessage('PDF downloaded successfully!');
-        }
-
-        // Utility functions
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
-        }
-
-        // Storage functions
-        function saveToStorage(key, data) {
-            const storage = {};
-            storage[key] = data;
-            // In a real app, you'd use localStorage or send to server
-            console.log('Saving to storage:', key, data);
-        }
-
-        function getFromStorage(key) {
-            // In a real app, you'd retrieve from localStorage or server
-            return null;
-        }
-
-        function saveFormData() {
-            const formData = getFormData();
-            saveToStorage('resumeFormData', formData);
-        }
-
-        function loadSavedData() {
-            const savedData = getFromStorage('resumeFormData');
-            if (savedData) {
-                populateForm(savedData);
-                updatePreview();
-            }
-        }
-
-        function clearStoredData() {
-            saveToStorage('resumeFormData', null);
-            saveToStorage('selectedTemplate', null);
-        }
-
-        function populateForm(data) {
-            // Populate basic fields
-            Object.keys(data).forEach(key => {
-                const element = document.getElementById(key);
-                if (element && typeof data[key] === 'string') {
-                    element.value = data[key];
-                }
-            });
-            
-            // Populate dynamic sections would require more complex logic
-            console.log('Loading saved data:', data);
-        }
-
-        function startAutoSave() {
-            if (autoSaveInterval) {
-                clearInterval(autoSaveInterval);
-            }
-            autoSaveInterval = setInterval(saveFormData, 30000); // Save every 30 seconds
-        }
-
-        // Message functions
+        
+        // Success message
         function showSuccessMessage(message) {
             const successDiv = document.createElement('div');
             successDiv.className = 'success-message';
             successDiv.textContent = message;
+            successDiv.style.position = 'fixed';
+            successDiv.style.top = '100px';
+            successDiv.style.right = '20px';
+            successDiv.style.zIndex = '2000';
+            successDiv.style.minWidth = '250px';
             
             document.body.appendChild(successDiv);
             
@@ -1262,187 +1174,48 @@
                 successDiv.remove();
             }, 3000);
         }
-
-        function showErrorMessage(message) {
-            const errorDiv = document.createElement('div');
-            errorDiv.className = 'success-message';
-            errorDiv.style.background = 'var(--error)';
-            errorDiv.textContent = message;
-            
-            document.body.appendChild(errorDiv);
-            
-            setTimeout(() => {
-                errorDiv.remove();
-            }, 3000);
+        
+        // Auto-save to local storage (but we can't use it in Claude, so just simulate)
+        function simulateAutoSave() {
+            // This would normally save to localStorage
+            // localStorage.setItem('resumeData', JSON.stringify(getFormData()));
+            console.log('Auto-save simulation - data would be saved locally');
         }
-        /*
-        // Create sample templates (since external files won't work in this demo)
-        function createSampleTemplate(templateId) {
-            const templates = {
-                template1: `
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                        <style>
-                            body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
-                            .header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 10px; }
-                            .section { margin: 20px 0; }
-                            .section h3 { color: #333; border-bottom: 1px solid #ccc; }
-                            .education-item, .experience-item, .project-item { margin: 10px 0; }
-                            .meta { color: #666; font-style: italic; }
-                            .skill-tag { background: #f0f0f0; padding: 2px 8px; margin: 2px; border-radius: 10px; }
-                        </style>
-                    </head>
-                    <body>
-                        <div class="header">
-                            <h1>{{fullName}}</h1>
-                            <p>{{email}} • {{phone}} • {{city}} • {{linkedin}}</p>
-                        </div>
-                        <div class="section">
-                            <h3>Professional Summary</h3>
-                            <p>{{summary}}</p>
-                        </div>
-                        <div class="section">
-                            <h3>Education</h3>
-                            {{education}}
-                        </div>
-                        <div class="section">
-                            <h3>Experience</h3>
-                            {{experience}}
-                        </div>
-                        <div class="section">
-                            <h3>Projects</h3>
-                            {{projects}}
-                        </div>
-                        <div class="section">
-                            <h3>Skills</h3>
-                            {{skills}}
-                        </div>
-                    </body>
-                    </html>
-                `,
-                template2: `
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                        <style>
-                            body { font-family: 'Georgia', serif; max-width: 800px; margin: 0 auto; padding: 20px; background: #f9f9f9; }
-                            .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; border-radius: 10px; }
-                            .section { background: white; margin: 20px 0; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-                            .section h3 { color: #667eea; margin-bottom: 15px; }
-                            .education-item, .experience-item, .project-item { margin: 15px 0; padding: 10px; border-left: 3px solid #667eea; }
-                            .meta { color: #666; font-style: italic; }
-                            .skill-tag { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 4px 12px; margin: 4px; border-radius: 15px; display: inline-block; }
-                        </style>
-                    </head>
-                    <body>
-                        <div class="header">
-                            <h1>{{fullName}}</h1>
-                            <p>{{email}} • {{phone}} • {{city}} • {{linkedin}}</p>
-                        </div>
-                        <div class="section">
-                            <h3>Professional Summary</h3>
-                            <p>{{summary}}</p>
-                        </div>
-                        <div class="section">
-                            <h3>Education</h3>
-                            {{education}}
-                        </div>
-                        <div class="section">
-                            <h3>Experience</h3>
-                            {{experience}}
-                        </div>
-                        <div class="section">
-                            <h3>Projects</h3>
-                            {{projects}}
-                        </div>
-                        <div class="section">
-                            <h3>Skills</h3>
-                            {{skills}}
-                        </div>
-                    </body>
-                    </html>
-                `
-            };
-            
-            return templates[templateId] || templates.template1;
-        }
+        
+        // Save form data every 30 seconds
+        setInterval(simulateAutoSave, 30000);
+    </script>
+            <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
 
-        // Override template loading for demo
-        async function loadAvailableTemplates() {
-            const templatesGrid = document.getElementById('templatesGrid');
-            templatesGrid.innerHTML = '';
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
 
-            const demoTemplates = [
-                {
-                    id: 'template1',
-                    name: 'Modern Professional',
-                    description: 'Clean and modern design perfect for tech and business professionals',
-                    features: ['ATS-Friendly', 'Clean Layout', 'Professional']
-                },
-                {
-                    id: 'template2',
-                    name: 'Creative Designer',
-                    description: 'Stylish and creative layout ideal for designers and creative roles',
-                    features: ['Creative', 'Visual Impact', 'Modern']
-                }
-            ];
+    apiKey: "AIzaSyArKpRmgNxo3POnmGjU-Kn-ces3HmY814Y",
 
-            for (const template of demoTemplates) {
-                const templateCard = document.createElement('div');
-                templateCard.className = 'template-card';
-                templateCard.onclick = () => selectTemplate(template.id);
-                
-                templateCard.innerHTML = `
-                    <div class="template-preview">
-                        <div style="padding: 20px; font-size: 12px; height: 100%; overflow: hidden;">
-                            <div style="font-weight: bold; margin-bottom: 10px;">{{Your Name}}</div>
-                            <div style="font-size: 10px; color: #666; margin-bottom: 15px;">email@example.com • (555) 123-4567</div>
-                            <div style="border-bottom: 1px solid #ccc; margin-bottom: 10px; font-weight: bold;">Summary</div>
-                            <div style="font-size: 10px; margin-bottom: 15px;">Professional summary text here...</div>
-                            <div style="border-bottom: 1px solid #ccc; margin-bottom: 10px; font-weight: bold;">Experience</div>
-                            <div style="font-size: 10px;">Job Title<br><span style="color: #666;">Company • Duration</span></div>
-                        </div>
-                    </div>
-                    <div class="template-info">
-                        <h3>${template.name}</h3>
-                        <p>${template.description}</p>
-                        <div class="template-features">
-                            ${template.features.map(feature => `<span class="feature-tag">${feature}</span>`).join('')}
-                        </div>
-                    </div>
-                `;
-                
-                templatesGrid.appendChild(templateCard);
-                availableTemplates.push(template);
-            }
-        }
+    authDomain: "resumeforger-fd27b.firebaseapp.com",
 
-        // Override confirm template selection for demo
-        async function confirmTemplateSelection() {
-            if (!selectedTemplate) return;
-            
-            const template = availableTemplates.find(t => t.id === selectedTemplate);
-            if (!template) return;
-            
-            // Save selected template
-            saveToStorage('selectedTemplate', selectedTemplate);
-            
-            // Load template content (using demo templates)
-            currentTemplateData = createSampleTemplate(selectedTemplate);
-            
-            // Update UI
-            document.getElementById('currentTemplateName').textContent = template.name;
-            closeTemplateModal();
-            
-            // Update preview
-            updatePreview();
-            
-            // Start auto-save
-            startAutoSave();
-            
-            showSuccessMessage(`Template "${template.name}" loaded successfully!`);
-        }*/
+    projectId: "resumeforger-fd27b",
+
+    storageBucket: "resumeforger-fd27b.firebasestorage.app",
+
+    messagingSenderId: "1006313420221",
+
+    appId: "1:1006313420221:web:1b23c312128a8202df4ed4",
+
+    measurementId: "G-1ZCVC00N3L"
+
+    };
+
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
     </script>
 </body>
 </html>
