@@ -39,6 +39,7 @@
             --accent: #f59e0b;
             --glass: rgba(255, 255, 255, 0.1);
             --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+            --warning-bg: rgba(245, 158, 11, 0.1);
         }
 
         body {
@@ -398,9 +399,176 @@
         .close:hover {
             color: var(--text);
         }
+        /* Development Warning Notification */
+        .dev-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            max-width: 400px;
+            background: var(--warning-bg);
+            border: 1px solid var(--warning);
+            border-radius: 12px;
+            padding: 1.5rem;
+            backdrop-filter: blur(20px);
+            z-index: 3000;
+            animation: slideInRight 0.5s ease-out;
+            box-shadow: 0 10px 30px rgba(245, 158, 11, 0.2);
+        }
+
+        .dev-notification.hidden {
+            display: none;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .notification-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+        }
+
+        .notification-title {
+            font-weight: 600;
+            color: var(--warning);
+            font-size: 1.1rem;
+        }
+
+        .notification-message {
+            color: var(--text-dim);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .notification-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .notification-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .notification-btn.primary {
+            background: var(--warning);
+            color: var(--bg);
+        }
+
+        .notification-btn.primary:hover {
+            background: #d97706;
+        }
+
+        .notification-btn.secondary {
+            background: transparent;
+            color: var(--text-dim);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .notification-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+        }
+
+        @media (max-width: 768px) {
+            .dev-notification {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+            }
+            
+            .notification-actions {
+                flex-direction: column;
+            }
+            
+            .notification-btn {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
+    <script>
+                // Development notification functions
+    function showDevNotification() {
+        const notification = document.getElementById('devNotification');
+        const dontShowAgain = localStorage.getItem('resumeforge_hide_dev_warning');
+        
+        if (!dontShowAgain) {
+            notification.classList.remove('hidden');
+        }
+    }
+
+    function dismissNotification(dontShowAgain) {
+        const notification = document.getElementById('devNotification');
+        
+        if (dontShowAgain) {
+            localStorage.setItem('resumeforge_hide_dev_warning', 'true');
+        }
+        
+        notification.style.animation = 'slideOutRight 0.3s ease-in';
+        setTimeout(() => {
+            notification.classList.add('hidden');
+        }, 300);
+    }
+
+    // Add slideOutRight animation (add this to CSS if not already present)
+    const slideOutStyle = document.createElement('style');
+    slideOutStyle.textContent = `
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(slideOutStyle);
+
+    // Show notification on page load
+    window.addEventListener('load', showDevNotification);
+    </script>
+        <!-- Development Warning Notification -->
+    <div id="devNotification" class="dev-notification hidden">
+        <div class="notification-header">
+            <span class="notification-icon">⚠️</span>
+            <span class="notification-title">Under Development</span>
+        </div>
+        <div class="notification-message">
+            The resume builder is currently under development and not finished. Please expect incomplete functionality and potential issues.
+        </div>
+        <div class="notification-actions">
+            <button class="notification-btn secondary" onclick="dismissNotification(false)">
+                Got it
+            </button>
+            <button class="notification-btn primary" onclick="dismissNotification(true)">
+                Don't ask again
+            </button>
+        </div>
+    </div>
         <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TNMZRNHK"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -642,6 +810,8 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+
+
     </script>
 </body>
 </html>
